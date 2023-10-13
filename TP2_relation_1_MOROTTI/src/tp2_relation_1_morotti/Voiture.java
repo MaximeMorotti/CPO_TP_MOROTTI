@@ -19,12 +19,15 @@ public class Voiture {
         C= puissance ;
         propriétaire = null;
     }
+    
     @Override
     public String toString() {
         String chaine_a_retourner;
-        chaine_a_retourner = B + " " + M + " de " + C + " Chevaux.";
+        chaine_a_retourner = B + " " + M + " de " + C + " Chevaux";
         return chaine_a_retourner ;
     }
+    
+
 }
 
     
