@@ -173,13 +173,29 @@ public class GrilleDeCellules {
     }
     
     /**
-     * Méthode permettant d' adapter l' affichage de la cellule selon son état.
-     * @return X si allumer O si éteinte.
+     * Méthode permettant d' afficher le tableau de cellule
+     * @return exemple:
+     *     | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+     *   --------------------------------
+     *    0 | O | X | X | O | O | X | O |
+     *   --------------------------------
+     *    1 | X | O | O | X | X | O | X |
+     *   --------------------------------
+     *    2 | O | X | X | O | O | X | O |
+     *   --------------------------------
+     *    3 | X | O | O | X | X | O | X |
+     *   --------------------------------
+     *    4 | X | O | O | X | X | O | X |
+     *   --------------------------------
+     *    5 | O | X | X | O | O | X | O |
+     *   --------------------------------
+     *    6 | O | X | X | O | O | X | O |
+     *   --------------------------------
      */
     @Override
     public String toString() {
         String chaine_a_retourner;
-        String L1 = " | ";
+        String L1 = "   | ";
         String espassement = "";
         String LnGr = "";
         for (int j = 0; j < nbColonnes; j++) {
@@ -188,39 +204,15 @@ public class GrilleDeCellules {
         for (int i = 0; i < L1.length(); i++) {
             espassement += "-";
         }
-        for (int j = 0; j < nbColonnes; j++) {
-            L1 += j + " | ";
+        for (int i = 0; i < nbLignes; i++) {
+            LnGr += " " + i + " ";
+            for (int j = 0; j < nbColonnes; j++) {
+                LnGr +=  matriceCellules[i][j] + " | ";
+            }
+            LnGr +=  "\n" + espassement + "\n";
         }
+        chaine_a_retourner = L1 + "\n" + espassement + "\n" + LnGr;
         return chaine_a_retourner ;
     }
     
 }
-"""
-
-
-- Enfin, la méthode toString() est redéfinie pour afficher l'état de la grille sous forme
-d'une représentation visuelle organisée. Elle crée une chaîne de caractères avec des
-indices pour les lignes et les colonnes, ainsi que des caractères "X" et "O" pour
-représenter l'état des cellules. Idéalement, cette méthode doit afficher la grille selon
-le format ci-dessous (exemple avec 7 lignes et 7 colonnes). Cette méthode doit
-s’adapter quelle que soit les dimensions de la grille.
- | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
---------------------------------
-0 | O | X | X | O | O | X | O |
---------------------------------
-1 | X | O | O | X | X | O | X |
---------------------------------
-2 | O | X | X | O | O | X | O |
---------------------------------
-3 | X | O | O | X | X | O | X |
---------------------------------
-4 | X | O | O | X | X | O | X |
---------------------------------
-5 | O | X | X | O | O | X | O |
---------------------------------
-6 | O | X | X | O | O | X | O |
---------------------------------
-En combinant ces fonctionnalités, la classe GrilleDeJeu offre un moyen pratique de gérer et de
-représenter des grilles de cellules lumineuses dans un programme Java.
-
-"""
