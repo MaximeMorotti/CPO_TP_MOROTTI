@@ -14,5 +14,62 @@ package lightoff_morotti_version_console;
  * 
  */
 public class CelluleLumineuse {
+    private boolean etat;
+
+    /**
+     *Constructeur de cellule lumineuse qui initialise un cellule éteinte.
+     */
+    public CelluleLumineuse() {
+        this.etat = false;
+    }
+    
+    /**
+     * Méthode permettant de changer l'état d'une cellule éteinte en allumer.
+     * Si la cellule était déjà allumer, cette méthode n'a aucun effet.
+     */
+    public void activerCellule(){
+        this.etat = true;
+    }
+    
+    /**
+     * Méthode permettant de changer l'état d'une cellule allumer en éteinte.
+     * Si la cellule était déjà éteinte, cette méthode n'a aucun effet.
+     */
+    public void eteindreCellule(){
+        this.etat = false;
+    }
+    
+    /**
+     * Méthode permettant de vérifier si une cellule est éteinte ou allumer.
+     * @return true si la cellule est éteinte et false si elle est allumer.
+     */
+    public boolean estEteint(){
+        if (this.etat == false){
+            return true;
+        }
+        else return false;
+    }
+    
+    /**
+     * Méthode qui permet de récupérer l'état d' une cellule.
+     * @return l'état de la cellule(true allumer false étteinte).
+     */
+    public boolean getEtat(){
+        return this.etat;
+    }
+    
+    /**
+     * Méthode permettant d' adapter l' affichage de la cellule selon son état.
+     * @return X si allumer O si éteinte.
+     */
+    @Override
+    public String toString() {
+        String chaine_a_retourner;
+        if (this.etat == true){
+            chaine_a_retourner = "X" ;
+        }
+        else chaine_a_retourner = "O";
+        return chaine_a_retourner ;
+    }
     
 }
