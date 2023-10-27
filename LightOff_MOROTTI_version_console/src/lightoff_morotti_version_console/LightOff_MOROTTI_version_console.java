@@ -19,7 +19,9 @@ public class LightOff_MOROTTI_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Partie Shalaçamarche = new Partie();
+        Shalaçamarche.initialiserPartie();
+        Shalaçamarche.lancerPartie();
     }
     
 }
