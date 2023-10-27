@@ -149,7 +149,7 @@ public class GrilleDeCellules {
     public void activerDiagonaleMontante() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                if (nbLignes - i == j) {
+                if (nbLignes - i -1 == j) {
                     matriceCellules[i][j].activerCellule();
                 }
             }
