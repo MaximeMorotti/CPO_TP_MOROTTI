@@ -4,8 +4,6 @@
  */
 package lightoff_morotti_version_console;
 import java.util.Scanner;
-import lightoff_morotti_version_console.CelluleLumineuse;
-import lightoff_morotti_version_console.GrilleDeCellules;
 /**
  *
  * @author 33768
@@ -32,16 +30,7 @@ public class Partie {
      * Mélange la grille de la partie pour qu' il y ai plus de 15 lumière allumer
      */
     public void initialiserPartie(){
-        int testéta=0;
-        while (testéta < 15)
-            grille.melangerMatriceAleatoirement(10);
-            for (int i = 0; i < grille.nbLignes; i++) {
-                for (int j = 0; j < grille.nbColonnes; j++) {
-                    if (grille.matriceCellules[i][j].estEteint()== false){
-                      testéta++;
-                    }
-                }
-            }
+        grille.melangerMatriceAleatoirement(2);
         }
     
     /**
@@ -65,54 +54,57 @@ public class Partie {
         while(grille.cellulesToutesEteintes()!= true){
             System.out.println("choisire : \n-Ligne: L\n-Colonne: C\n-Diagonale dessendante: Dd\n-Diagional montante: Dm");
             Pose = sc.nextLine();
-            while (Pose!="L"||Pose!="C"||Pose!="Dd"||Pose!="Dm"){
+            System.out.println(Pose);
+            while (!Pose.equals("L") && !Pose.equals("C") && !Pose.equals("Dd") && !Pose.equals("Dm")){
                 System.out.println("Erreur de syntaxe Choisire dans : \n-Ligne: L\n-Colonne: C\n-Diagonale dessendante: Dd\n-Diagional montante: Dm");
                 Pose = sc.nextLine();
+                System.out.println(Pose);
             }
-            if (Pose == "Dd"){
+            if (Pose.equals("Dd")){
                 grille.activerDiagonaleDescendante();
                 this.nbCoups++;
             }
-            if (Pose == "Dm"){
+            if (Pose.equals("Dm")){
                 grille.activerDiagonaleMontante();
                 this.nbCoups++;
             }
-            if (Pose == "L"){
+            if (Pose.equals("L")){
                 System.out.println( "choisire le nombre de la ligne:");
                 for(int i = 0; i < grille.nbLignes; i++){
                     System.out.println("- L" + i);
-                    nb = sc.nextInt();
                 }
+                nb = sc.nextInt();
                 while ( nb > grille.nbLignes){
                     System.out.println( "Erreur de syntaxe choisire le nombre de la ligne:");
                     for(int i = 0; i < grille.nbLignes; i++){
                         System.out.println("- L" + i);
-                        nb = sc.nextInt();
                     }    
+                    nb = sc.nextInt();
                 }
                 grille.activerLigneDeCellules(nb);
                 this.nbCoups++;
             }
-            if (Pose == "G"){
+            if (Pose.equals("C")){
                 System.out.println( "choisire le nombre de la ligne:");
                 for(int i = 0; i < grille.nbColonnes; i++){
                     System.out.println("- L" + i);
-                    nb = sc.nextInt();
                 }
+                nb = sc.nextInt();
                 while ( nb > grille.nbColonnes){
                     System.out.println( "Erreur de syntaxe choisire le nombre de la ligne:");
                     for(int i = 0; i < grille.nbColonnes; i++){
                         System.out.println("- L" + i);
-                        nb = sc.nextInt();
-                    }    
+                    }  
+                    nb = sc.nextInt();
                 }
                 grille.activerColonneDeCellules(nb);
                 this.nbCoups++;
             }
-            System.out.print("Vous êtes au: "+this.nbCoups+"eme coup.");
+            System.out.println("Vous etes au: "+this.nbCoups+"eme coup.");
             System.out.print(grille);
         
         }
         System.out.print("BRAVOS vous avez réussi en: "+this.nbCoups+" coup.");
     }
+}
     
