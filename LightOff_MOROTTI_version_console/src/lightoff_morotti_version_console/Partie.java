@@ -116,25 +116,3 @@ public class Partie {
         System.out.print("BRAVOS vous avez réussi en: "+this.nbCoups+" coup.");
     }
     
-    
-    
-
-"""
-
-
-- La méthode permetant de jouer au jeu LightOff
-en affichant l'état initial de la grille, puis en entrant dans une boucle de jeu qui continue
-tant que toutes les cellules ne sont pas éteintes. À chaque tour de la boucle :
-a. Un coup est demandé au joueur sous la forme d’une saisie au clavier
-b. La ligne, colonne, ou diagonale correspondante est activée
-c. Le nombre de coups est incrémenté et affiché
-d. l'état mis à jour de la grille est affiché.
-e. Une fois que toutes les cellules sont éteintes, le jeu se termine, et le nombre de
-coups nécessaires pour éteindre toutes les cellules est affiché. Cette méthode
-peut éventuellement être décomposée en plusieurs sous-méthodes.
-.
-En résumé, la classe Partie facilite le jeu du LightOff en intégrant une grille de cellules
-lumineuses et en fournissant une méthode pour jouer une partie complète, suivant les règles
-du jeu. Cette classe permet ainsi de jouer au LightOff de manière interactive.--
-
-"""
