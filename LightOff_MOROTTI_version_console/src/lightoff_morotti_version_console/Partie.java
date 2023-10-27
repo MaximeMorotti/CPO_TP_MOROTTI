@@ -44,6 +44,18 @@ public class Partie {
             }
         }
     
+    /**
+     * - La méthode permetant de jouer au jeu LightOff
+     *   en affichant l'état initial de la grille, puis en entrant dans une boucle de jeu qui continue
+     *   tant que toutes les cellules ne sont pas éteintes. À chaque tour de la boucle :
+     *   a. Un coup est demandé au joueur sous la forme d’une saisie au clavier
+     *   b. La ligne, colonne, ou diagonale correspondante est activée
+     *   c. Le nombre de coups est incrémenté et affiché
+     *   d. l'état mis à jour de la grille est affiché.
+     *   e. Une fois que toutes les cellules sont éteintes, le jeu se termine, et le nombre de
+     *   coups nécessaires pour éteindre toutes les cellules est affiché. Cette méthode
+     *   peut éventuellement être décomposée en plusieurs sous-méthodes.
+     */
     public void lancerPartie(){
         String Pose;
         int nb=1000;
@@ -59,9 +71,11 @@ public class Partie {
             }
             if (Pose == "Dd"){
                 grille.activerDiagonaleDescendante();
+                this.nbCoups++;
             }
             if (Pose == "Dm"){
                 grille.activerDiagonaleMontante();
+                this.nbCoups++;
             }
             if (Pose == "L"){
                 System.out.println( "choisire le nombre de la ligne:");
@@ -77,6 +91,7 @@ public class Partie {
                     }    
                 }
                 grille.activerLigneDeCellules(nb);
+                this.nbCoups++;
             }
             if (Pose == "G"){
                 System.out.println( "choisire le nombre de la ligne:");
@@ -92,11 +107,13 @@ public class Partie {
                     }    
                 }
                 grille.activerColonneDeCellules(nb);
-                
-            
-        }
+                this.nbCoups++;
+            }
+            System.out.print("Vous êtes au: "+this.nbCoups+"eme coup.");
+            System.out.print(grille);
         
-    }
+        }
+        System.out.print("BRAVOS vous avez réussi en: "+this.nbCoups+" coup.");
     }
     
     
@@ -105,7 +122,7 @@ public class Partie {
 """
 
 
-- La méthode lancerPartie() est le cœur de la classe. Elle permet de jouer au jeu LightOff
+- La méthode permetant de jouer au jeu LightOff
 en affichant l'état initial de la grille, puis en entrant dans une boucle de jeu qui continue
 tant que toutes les cellules ne sont pas éteintes. À chaque tour de la boucle :
 a. Un coup est demandé au joueur sous la forme d’une saisie au clavier
