@@ -16,7 +16,7 @@ public class GrilleDeCellules {
     Random r = new Random();
     int nbLignes;
     int nbColonnes;
-    CelluleLumineuse[][] matriceCellules;
+    public CelluleLumineuse[][] matriceCellules;
 
     /**
      * Méthode permettant de crée un tableau remplie de cellulue luineuse.
@@ -84,7 +84,7 @@ public class GrilleDeCellules {
             } else {
                 for (int i = 0; i < nbLignes; i++) {
                     for (int j = 0; j < nbColonnes; j++) {
-                        if (nbLignes - i == j) {
+                        if (nbLignes - i -1 == j) {
                             matriceCellules[i][j].activerCellule();
                         }
                     }
@@ -96,16 +96,15 @@ public class GrilleDeCellules {
     }
 
     /**
-     * Méthode permettant dengénérer un tableau de Cellule lumineuse mélanger au
+     * Méthode permettant de générer un tableau de Cellule lumineuse mélanger au
      * nbTours fois choisie.
      *
      * @param nbTours nombre choisie de mélange fait sur la grille.
      */
     public void melangerMatriceAleatoirement(int nbTours) {
-        GrilleDeCellules GrCl = new GrilleDeCellules(6, 6);
-        GrCl.eteindreToutesLesCellule();
+        this.eteindreToutesLesCellule();
         for (int i = 0; i < nbTours; i++) {
-            GrCl.activerLigneColonneOuDiagonaleAleatoire();
+            this.activerLigneColonneOuDiagonaleAleatoire();
         }
     }
 
@@ -115,7 +114,10 @@ public class GrilleDeCellules {
      */
     public void activerLigneDeCellules(int idLigne) {
         for (int j = 0; j < nbColonnes; j++) {
-            matriceCellules[idLigne][j].activerCellule();
+            if (matriceCellules[idLigne][j].getEtat()==false){
+                matriceCellules[idLigne][j].activerCellule();
+            }
+            else matriceCellules[idLigne][j].eteindreCellule();
 
         }
     }    
@@ -126,7 +128,10 @@ public class GrilleDeCellules {
      */
     public void activerColonneDeCellules(int idColonne) {
         for (int i = 0; i < nbLignes; i++) {
-            matriceCellules[i][idColonne].activerCellule();
+            if (matriceCellules[i][idColonne].getEtat()==false){
+                matriceCellules[i][idColonne].activerCellule();
+            }
+            else matriceCellules[i][idColonne].eteindreCellule();
         }
     }
     
@@ -137,7 +142,10 @@ public class GrilleDeCellules {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 if (i == j) {
-                    matriceCellules[i][j].activerCellule();
+                    if (matriceCellules[i][j].getEtat()==false){
+                        matriceCellules[i][j].activerCellule();
+                    }
+                    else matriceCellules[i][j].eteindreCellule();
                 }
             }
         }  
@@ -150,7 +158,10 @@ public class GrilleDeCellules {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 if (nbLignes - i -1 == j) {
-                    matriceCellules[i][j].activerCellule();
+                    if (matriceCellules[i][j].getEtat()==false){
+                        matriceCellules[i][j].activerCellule();
+                    }
+                    else matriceCellules[i][j].eteindreCellule();
                 }
             }
         }
@@ -201,11 +212,11 @@ public class GrilleDeCellules {
         for (int j = 0; j < nbColonnes; j++) {
             L1 += j + " | ";
         }
-        for (int i = 0; i < L1.length(); i++) {
+        for (int i = 0; i < L1.length()-1; i++) {
             espassement += "-";
         }
         for (int i = 0; i < nbLignes; i++) {
-            LnGr += " " + i + " ";
+            LnGr += " " + i + " | ";
             for (int j = 0; j < nbColonnes; j++) {
                 LnGr +=  matriceCellules[i][j] + " | ";
             }
