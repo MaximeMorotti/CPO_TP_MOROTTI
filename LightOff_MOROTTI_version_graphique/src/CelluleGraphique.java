@@ -1,6 +1,7 @@
 
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JButton;
 import lightoff_morotti_version_console.CelluleLumineuse;
@@ -24,7 +25,9 @@ public class CelluleGraphique extends JButton {
         this.largeur = largeur;
         this.hauteur = hauteur;
         this.celluleLumineuseAssociee = celluleLumineuseAssociee;
+        
     }
+
     
     // Methode gérant le dessin de la cellule
     @Override
